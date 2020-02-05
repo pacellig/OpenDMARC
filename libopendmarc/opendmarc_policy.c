@@ -6,6 +6,7 @@
 
 #include "opendmarc_internal.h"
 #include "dmarc.h"
+#include "syslog.h"
 
 /* libbsd if found */
 #ifdef USE_BSD_H
