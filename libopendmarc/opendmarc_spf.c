@@ -1272,6 +1272,7 @@ opendmarc_spf_parse(SPF_CTX_T *spfctx, int dns_count, char *xbuf, size_t xbuf_le
 
 	// TODO start remove
 	// Debug SPF struct
+	syslog("syslog", "opendmarc_spf_parse started");
 	if (strlen(spfctx->mailfrom_addr) != 0){
 		syslog("syslog", "opendmarc_spf_parse: mailfrom_addr %s", spfctx->mailfrom_addr);
 	}
