@@ -430,6 +430,8 @@ opendmarc_spf_status_to_pass(int status, int none_pass)
 		r = 0;
 		break;
 	}
+	syslog("syslog", "opendmarc_spf_status_to_pass: %d", r);
+
 	return r;
 }
 
