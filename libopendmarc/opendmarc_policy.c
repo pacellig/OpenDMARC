@@ -380,7 +380,8 @@ opendmarc_policy_store_spf(DMARC_POLICY_T *pctx, u_char *domain, int result, int
 	char *dp;
 
 	syslog("syslog", "opendmarc_policy_store_spf: Domain %s", domain);
-	syslog("syslog", "opendmarc_policy_store_spf: spf domain: %s", pctx->spf_domain)
+	syslog("syslog", "opendmarc_policy_store_spf: spf domain: %s", pctx->spf_domain);
+
 	if (pctx == NULL){
 		return DMARC_PARSE_ERROR_NULL_CTX;
 	}
