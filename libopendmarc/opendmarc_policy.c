@@ -1377,6 +1377,10 @@ opendmarc_policy_fetch_alignment(DMARC_POLICY_T *pctx, int *dkim_alignment, int 
 	{
 		return DMARC_PARSE_ERROR_NULL_CTX;
 	}
+
+	syslog("syslog", "opendmarc_policy_fetch_alignment: SPF human outcome: %s", pctx->spf_human_outcome);
+	syslog("syslog", "opendmarc_policy_fetch_alignment: DKIM human outcome: %s", pctx->dkim_human_outcome);
+
 	if (dkim_alignment != NULL)
 	{
 		*dkim_alignment = pctx->dkim_alignment;
