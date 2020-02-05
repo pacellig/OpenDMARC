@@ -379,6 +379,9 @@ opendmarc_policy_store_spf(DMARC_POLICY_T *pctx, u_char *domain, int result, int
 	char domain_buf[256];
 	char *dp;
 
+	syslog("syslog", "TEST syslog: opendmarc_policy_store_spf");
+	fprintf(stderr, "TEST fprintf: opendmarc_policy_store_spf");
+
 	if (pctx == NULL)
 		return DMARC_PARSE_ERROR_NULL_CTX;
 	if (domain == NULL || strlen((char *)domain) == 0)
