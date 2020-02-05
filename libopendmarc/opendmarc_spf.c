@@ -338,6 +338,9 @@ opendmarc_spf_status_to_msg(SPF_CTX_T *spfctx, int status)
 		r = "Undefined Internal Error";
 		break;
 	}
+
+	syslog("syslog", "opendmarc_spf_status_to_msg: %s", r);
+
 	return r;
 }
 
