@@ -82,6 +82,10 @@ main(int argc, char **argv)
 	lib.tld_type = OPENDMARC_TLD_TYPE_NONE;
 	lib.nscount = 0;
 
+	fprintf(stdout, "%s: opendmarc_policy_library_init(): %s\n",
+		        progname,
+		        opendmarc_policy_status_to_str(status));
+
 	status = opendmarc_policy_library_init(&lib);
 	if (status != DMARC_PARSE_OKAY)
 	{
