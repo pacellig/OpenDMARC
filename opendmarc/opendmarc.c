@@ -2730,6 +2730,8 @@ mlfi_eom(SMFICTX *ctx)
 	                                 &align_spf);
 	dmarcf_dstring_printf(dfc->mctx_histbuf, "align_dkim %d\n",
 	                      align_dkim);
+
+	syslog("syslog", "mlfi_eom: SPF alignment: %d", align_spf);
 	dmarcf_dstring_printf(dfc->mctx_histbuf, "align_spf %d\n", align_spf);
 
 	/* prepare human readable policy string for later processing */
