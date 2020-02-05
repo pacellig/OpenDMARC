@@ -2373,6 +2373,8 @@ mlfi_eom(SMFICTX *ctx)
 					continue;
 				}
 
+				syslog("syslog", "mlfi_eom: extracted spfaddr: %s", spfaddr);
+				
 				status = dmarcf_mail_parse(addrbuf, &user,
 				                           &domain);
 				if (status != 0 || domain == NULL ||
