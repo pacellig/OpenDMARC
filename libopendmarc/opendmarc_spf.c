@@ -1924,6 +1924,9 @@ opendmarc_spf_parse(SPF_CTX_T *spfctx, int dns_count, char *xbuf, size_t xbuf_le
 			}
 		}
 	}
+
+	syslog("syslog", "opendmarc_spf_parse: SPF status: %d", spfctx->status);
+
 	return spfctx->status;
 }
 
