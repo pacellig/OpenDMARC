@@ -81,6 +81,8 @@ opendmarc_spf_dns_lookup_a_actual(char *domain, int sought, char **ary, int *cnt
 		return NULL;
 	}
 
+	syslog("syslog", "opendmarc_spf_dns_lookup_a_actual: domain to look up: %s", domain);
+
 #ifdef HAVE_RES_NINIT 
         memset(&resp, '\0', sizeof resp);
 	res_ninit(&resp);
