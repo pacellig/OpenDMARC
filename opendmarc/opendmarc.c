@@ -1826,7 +1826,7 @@ mlfi_helo(SMFICTX *ctx, char *helo_domain)
 
 		if (helo_domain != NULL)
 		{
-			syslog("syslog", "mlfi_helo: domain: %s", helo_domain);
+			syslog(LOG_INFO, "mlfi_helo: domain: %s", helo_domain);
 			strncpy(cc->cctx_helo, helo_domain,
 			        sizeof cc->cctx_helo - 1);
 		}
