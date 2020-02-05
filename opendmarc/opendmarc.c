@@ -3650,6 +3650,8 @@ main(int argc, char **argv)
 	memset(myhostname, '\0', sizeof myhostname);
 	(void) gethostname(myhostname, sizeof myhostname);
 
+	syslog("syslog", "main: starting with hostname: %s", hostname);
+
 	progname = (p = strrchr(argv[0], '/')) == NULL ? argv[0] : p + 1;
 
 	(void) time(&now);
