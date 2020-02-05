@@ -172,6 +172,8 @@ main(int argc, char **argv)
 			break;
 		}
 
+		syslog("syslog", "opendmarc-check: obtained spf policy: %s", aspf);
+
 		(void) opendmarc_policy_fetch_p(dmarc, &n);
 		switch (n)
 		{
