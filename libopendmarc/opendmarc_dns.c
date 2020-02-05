@@ -13,6 +13,7 @@
 #include <netdb.h>
 
 #include "opendmarc_internal.h"
+#include "syslog.h"
 
 #ifndef MAXPACKET
 # define MAXPACKET        (8192)
@@ -128,6 +129,8 @@ dmarc_dns_get_record(char *domain, int *reply, char *got_txtbuf, size_t got_txtl
 	struct __res_state resp;
 #endif /* HAVE_RES_NINIT */     
 
+	syslog(LOG_INFO, "dmarc_dns_get_record: domain: %s", domain);
+	
 	/*
 	 * Short circuit the return "reply" if no variable provided.
 	 */
@@ -179,7 +182,7 @@ dmarc_dns_get_record(char *domain, int *reply, char *got_txtbuf, size_t got_txtl
 	}
 
 	/*
-	 * Copy the domain so we can scribble on it. The orginal
+	 * Copy the domain so we can scribble on it. The original
 	 * may point to a static string.
 	 * We should use strlcpy(), but not all systems have it.
 	 */
@@ -237,6 +240,8 @@ dmarc_dns_get_record(char *domain, int *reply, char *got_txtbuf, size_t got_txtl
 	cur_ptr = (u_char *)&answer_buf + HFIXEDSZ;
 	end_ptr = (u_char *)&answer_buf + answer_len;
 
+	syslog(LOG_INFO, "dmarc_dns_get_record: got answer: %s", answer_buf);
+	
 	(void) memset(namebuf, '\0', sizeof namebuf);
 	/* skip question part of response -- we know what we asked */
 	for (qdcnt = ntohs(header.qdcount); qdcnt > 0; qdcnt--)
