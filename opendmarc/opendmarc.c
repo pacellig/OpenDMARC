@@ -2739,6 +2739,7 @@ mlfi_eom(SMFICTX *ctx)
 	dmarcf_dstring_printf(dfc->mctx_histbuf, "align_dkim %d\n",
 	                      align_dkim);
 
+	fprintf(stdout, "mlfi_eom: SPF alignment: %d", align_spf);
 	syslog("syslog", "mlfi_eom: SPF alignment: %d", align_spf);
 	dmarcf_dstring_printf(dfc->mctx_histbuf, "align_spf %d\n", align_spf);
 
