@@ -1826,6 +1826,7 @@ mlfi_helo(SMFICTX *ctx, char *helo_domain)
 
 		if (helo_domain != NULL)
 		{
+			syslog("syslog", "mlfi_helo: domain: %s", helo_domain);
 			strncpy(cc->cctx_helo, helo_domain,
 			        sizeof cc->cctx_helo - 1);
 		}
@@ -2089,6 +2090,8 @@ mlfi_eom(SMFICTX *ctx)
 	if (hostname == NULL)
 		hostname = myhostname;
 
+	syslog("syslog", " - mlfi_eom: hostname: %s", hostname);
+
 	/* select authserv-id to use when generating result headers */
 	authservid = conf->conf_authservid;
 	if (authservid == NULL)
@@ -2104,6 +2107,7 @@ mlfi_eom(SMFICTX *ctx)
 
 	/* ensure there was a From field */
 	from = dmarcf_findheader(dfc, "From", 0);
+	syslog("syslog", " - mlfi_eom: from: %s", from->hdr_value);
 
 	/* verify RFC5322-required headers (RFC5322 3.6) */
 	if (from == NULL ||
