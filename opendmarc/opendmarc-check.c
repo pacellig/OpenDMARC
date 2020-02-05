@@ -9,6 +9,7 @@
 #include <sys/param.h>
 #include <sys/types.h>
 #include <sysexits.h>
+#include "syslog.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -235,6 +236,7 @@ main(int argc, char **argv)
 		fprintf(stdout, "\tSPF alignment: %s\n", aspf);
 		fprintf(stdout, "\tDomain policy: %s\n", p);
 		fprintf(stdout, "\tSubdomain policy: %s\n", sp);
+		syslog("syslog", "opendmarc-check: obtained subdomain policy: %s", sp);
 		fprintf(stdout, "\tAggregate report URIs:\n");
 		for (n = 0; rua != NULL && rua[n] != NULL; n++)
 			fprintf(stdout, "\t\t%s\n", rua[n]);
