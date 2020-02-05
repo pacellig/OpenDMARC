@@ -471,7 +471,7 @@ dmarcf_parse_received_spf(char *str)
 		}
 	}
 
-	syslog("syslog", "dmarcf_parse_received_spf: result: %s", result);
+	syslog("syslog", "dmarc_parse_received_spf: result: %s", result);
 
 	if (strcasecmp(result, "pass") == 0)
 		return ARES_RESULT_PASS;
@@ -1814,6 +1814,8 @@ mlfi_helo(SMFICTX *ctx, char *helo_domain)
 	struct dmarcf_config *conf;
 
 	assert(ctx != NULL);
+
+	syslog("syslog", "mlfi_hello");
 
 	cc = (DMARCF_CONNCTX) dmarcf_getpriv(ctx);
 	if (cc != NULL)
