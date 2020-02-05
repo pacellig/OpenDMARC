@@ -471,6 +471,8 @@ dmarcf_parse_received_spf(char *str)
 		}
 	}
 
+	syslog("syslog", "dmarcf_parse_received_spf: result: %s", result);
+
 	if (strcasecmp(result, "pass") == 0)
 		return ARES_RESULT_PASS;
 	else if (strcasecmp(result, "fail") == 0)
