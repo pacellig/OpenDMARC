@@ -379,6 +379,7 @@ opendmarc_policy_store_spf(DMARC_POLICY_T *pctx, u_char *domain, int result, int
 	char domain_buf[256];
 	char *dp;
 
+	// TODO remove
 	syslog("syslog", "opendmarc_policy_store_spf: Domain %s", domain);
 	syslog("syslog", "opendmarc_policy_store_spf: spf domain: %s", pctx->spf_domain);
 
@@ -393,7 +394,10 @@ opendmarc_policy_store_spf(DMARC_POLICY_T *pctx, u_char *domain, int result, int
 	if (human_readable != NULL)
 		pctx->spf_human_outcome = strdup((char *)human_readable);
 	pctx->spf_domain = strdup((char *)dp);
+
+	// TODO remove
 	syslog("syslog", "opendmarc_policy_store_spf: spf domain: %s (after strdup)", pctx->spf_domain);
+	
 	if (pctx->spf_domain == NULL)
 		return DMARC_PARSE_ERROR_NO_ALLOC;
 	switch (result)

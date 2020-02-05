@@ -1270,6 +1270,25 @@ opendmarc_spf_parse(SPF_CTX_T *spfctx, int dns_count, char *xbuf, size_t xbuf_le
 	int up = FALSE;
 	int ret;
 
+	// TODO start remove
+	// Debug SPF struct
+	if (strlen(spfctx->mailfrom_addr) != 0){
+		syslog("syslog", "opendmarc_spf_parse: mailfrom_addr %s", spfctx->mailfrom_addr);
+	}
+	if (strlen(spfctx->helo_domain) != 0){
+		syslog("syslog", "opendmarc_spf_parse: helo_domain %s", spfctx->helo_domain);
+	}
+	if (strlen(spfctx->mailfrom_domain) != 0){
+		syslog("syslog", "opendmarc_spf_parse: mailfrom_domain %s", spfctx->mailfrom_domain);
+	}
+	if (strlen(spfctx->validated_domain) != 0){
+		syslog("syslog", "opendmarc_spf_parse: validated_domain %s", spfctx->validated_domain);
+	}
+	if (strlen(spfctx->spf_record) != 0){
+		syslog("syslog", "opendmarc_spf_parse: spf_record %s", spfctx->spf_record);
+	}
+	// TODO end remove
+
 	spfctx->in_token = SPF_IN_TOKEN_NONE;
 	if (spfctx == NULL)
 	{
